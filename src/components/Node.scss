@@ -1,0 +1,12 @@
+$size: 40px;
+$color: white;
+
+.circle {
+  width: $size;
+  height: $size;
+  border-radius: $size / 2;
+  background-color: blue;
+  color: $color;
+}
+
+
