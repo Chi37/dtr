@@ -5,7 +5,7 @@ import SignupPage from "../Login/SignupPage";
 import LoginPage from "../Login/LoginPage";
 import userService from "../../utils/userService";
 import Container from "../../components/Container";
-import {fetchWiki} from '../../utils/wiki';
+import { fetchWiki } from '../../utils/wiki';
 
 class App extends Component {
   constructor() {
@@ -13,7 +13,7 @@ class App extends Component {
     this.state = {
       user: userService.getUser(),
       value: '',
-      nodes: {}
+      nodes: []
     };
     this.handleSearch = this.handleSearch.bind(this);
   }
@@ -30,14 +30,22 @@ class App extends Component {
   async handleSearch(e) {
     e.preventDefault();
     let result = await (fetchWiki(this.state.value))
+    this.handleState(result);
+  }
+
+  handleState = result => {
     console.log(result)
+    let copyState = { ...this.state };
+    copyState.nodes.push(result[0]); 
+    console.log(copyState)
+    this.setState(copyState)
   }
 
   handleChange = (e) => {
-    this.setState({value: e.target.value})
+    this.setState({ value: e.target.value })
   }
 
- 
+
   /*--- Lifecycle Methods ---*/
 
   async componentDidMount() {
@@ -51,12 +59,13 @@ class App extends Component {
         <header className="header-footer">DTR</header>
         <Switch>
           <Route exact path="/" render={() => (
-            <Container 
-            user={this.state.user} 
-            value = {this.state.value}
-            handleLogout={this.handleLogout}
-            handleSearch = {this.handleSearch}
-            handleChange = {this.handleChange}
+            <Container
+              user={this.state.user}
+              value={this.state.value}
+              nodes={this.state.nodes}
+              handleLogout={this.handleLogout}
+              handleSearch={this.handleSearch}
+              handleChange={this.handleChange}
             />)}
           />
           <Route exact path="/signup" render={({ history }) => (
