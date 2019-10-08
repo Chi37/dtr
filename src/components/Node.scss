@@ -9,24 +9,16 @@ $color-collection: (rgba(40, 40, 213, 0.94), rgb(138,8,8), rgba(255, 249, 249, 0
 //     }
 // }
 
-.circle {
-  width: $size;
-  height: $size;
-  border-radius: $size / 2;
-  background-color: nth($color-collection,1);
-  color: $text;
-  line-height: $size;
-}
 
-.circle > p {
-  text-align: center;
-  justify-content: center;
-}
+
+
+
 // #test {
 //   color: red;
 // }
 
-// @for $var from 1 to 10{
+// @for $var from 1 to .circle children
+
 //   #test { :nth-child(#{$var}){
 //     top: random(750) + px;
 //     left: random(1500) + px;

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./App";
+import "./App.scss";
 import { Route, Switch } from "react-router-dom";
 import SignupPage from "../Login/SignupPage";
 import LoginPage from "../Login/LoginPage";
@@ -31,18 +31,29 @@ class App extends Component {
     e.preventDefault();
     let result = await (fetchWiki(this.state.value))
     this.handleState(result);
+    
+  }
+
+  handleNodeClick = () => {
+    alert('g')
+    //call handleSearch for each child
   }
 
   handleState = result => {
     console.log(result)
     let copyState = { ...this.state };
-    copyState.nodes.push(result[0]); 
+    copyState.nodes.push({
+        name: result[0],
+        children: [],
+        link: result[3][0],
+        snippet: result[2][0]
+      }); 
     console.log(copyState)
     this.setState(copyState)
   }
 
   handleChange = (e) => {
-    this.setState({ value: e.target.value })
+    this.setState({ value: e.target.value });
   }
 
 
@@ -53,9 +64,9 @@ class App extends Component {
     // this.setState({ scores });
   }
 
-  render() {
+  render() { 
     return (
-      <div>
+      <>
         <header className="header-footer">DTR</header>
         <Switch>
           <Route exact path="/" render={() => (
@@ -66,6 +77,7 @@ class App extends Component {
               handleLogout={this.handleLogout}
               handleSearch={this.handleSearch}
               handleChange={this.handleChange}
+              handleNodeClick = {this.handleNodeClick}
             />)}
           />
           <Route exact path="/signup" render={({ history }) => (
@@ -89,7 +101,7 @@ class App extends Component {
               <Redirect to='/login'/>
           }/> */}
         </Switch>
-      </div>
+      </>
     );
   }
 }

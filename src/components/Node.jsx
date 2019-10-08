@@ -3,8 +3,12 @@ import './Node.scss'
 
 const Node = (props) => (
 	<>
-		<div className='circle'>
-			<p>{props.node} </p>
+	{console.log(`node: ${props.node['name']}`)}
+	{/* {props.node.map(e=>{
+		console.log(e)
+	})} */}
+		<div>
+			<p>{props.node.name}</p>
 		</div>
 	</>
 );
