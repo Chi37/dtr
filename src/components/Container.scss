@@ -2,7 +2,7 @@ $size: 50px;
 $text: white;
 $color-collection: (rgba(40, 40, 213, 0.94), rgb(138,8,8), rgba(255, 249, 249, 0.886), rgb(64, 120, 155));
 
-#nodes {
+.nodes {
 	width: $size;
   height: $size;
   border: 2px dotted nth($color-collection,3);
@@ -12,18 +12,6 @@ $color-collection: (rgba(40, 40, 213, 0.94), rgb(138,8,8), rgba(255, 249, 249, 0
   line-height: $size / 2;
   text-align: center;
 }
-
-.nodes {
-	position: relative;
-	border-radius: 100%; 
-	width: 50px; 
-	line-height: 50px; 
-	text-align: center; 
-	margin-top: 50px; 
-	background-color: #fff; 
-	z-index: 2;
-}
-
 
 .nodes:first-child {
 	margin-top: 0;

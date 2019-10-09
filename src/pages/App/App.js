@@ -13,7 +13,18 @@ class App extends Component {
     this.state = {
       user: userService.getUser(),
       value: '',
-      nodes: []
+      nodes: [{
+        name: 'Computer',
+        children: [],
+        link: 'www.comp.com',
+        snippet: 'computers are a great tool to learn'
+      },
+      {
+        name: 'Computer',
+        children: [],
+        link: 'www.comp.com',
+        snippet: 'computers are a great tool to learn'
+      }]
     };
     this.handleSearch = this.handleSearch.bind(this);
   }
@@ -31,23 +42,25 @@ class App extends Component {
     e.preventDefault();
     let result = await (fetchWiki(this.state.value))
     this.handleState(result);
-    
+
   }
 
   handleNodeClick = () => {
     alert('g')
+    //grab data from main node
     //call handleSearch for each child
+
   }
 
   handleState = result => {
     console.log(result)
     let copyState = { ...this.state };
     copyState.nodes.push({
-        name: result[0],
-        children: [],
-        link: result[3][0],
-        snippet: result[2][0]
-      }); 
+      name: result[0],
+      children: [],
+      link: result[3][0],
+      snippet: result[2][0]
+    });
     console.log(copyState)
     this.setState(copyState)
   }
@@ -64,7 +77,7 @@ class App extends Component {
     // this.setState({ scores });
   }
 
-  render() { 
+  render() {
     return (
       <>
         <header className="header-footer">DTR</header>
@@ -77,7 +90,7 @@ class App extends Component {
               handleLogout={this.handleLogout}
               handleSearch={this.handleSearch}
               handleChange={this.handleChange}
-              handleNodeClick = {this.handleNodeClick}
+              handleNodeClick={this.handleNodeClick}
             />)}
           />
           <Route exact path="/signup" render={({ history }) => (
