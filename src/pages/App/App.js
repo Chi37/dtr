@@ -5,7 +5,9 @@ import SignupPage from "../Login/SignupPage";
 import LoginPage from "../Login/LoginPage";
 import userService from "../../utils/userService";
 import Container from "../../components/Container";
-import { fetchWiki } from '../../utils/wiki';
+import { fetchWiki, scrapeWikiPage } from '../../utils/wiki';
+
+
 
 class App extends Component {
   constructor() {
@@ -13,18 +15,20 @@ class App extends Component {
     this.state = {
       user: userService.getUser(),
       value: '',
-      nodes: [{
-        name: 'Computer',
-        children: [],
-        link: 'www.comp.com',
-        snippet: 'computers are a great tool to learn'
-      },
-      {
-        name: 'Computer',
-        children: [],
-        link: 'www.comp.com',
-        snippet: 'computers are a great tool to learn'
-      }]
+      nodes: [
+        //   {
+        //   name: 'Computer',
+        //   children: [],
+        //   link: 'www.comp.com',
+        //   snippet: 'computers are a great tool to learn'
+        // },
+        // {
+        //   name: 'Computer',
+        //   children: [],
+        //   link: 'www.comp.com',
+        //   snippet: 'computers are a great tool to learn'
+        // }
+      ]
     };
     this.handleSearch = this.handleSearch.bind(this);
   }
@@ -44,11 +48,9 @@ class App extends Component {
     this.handleState(result);
 
   }
-
-  handleNodeClick = () => {
-    alert('g')
-    //grab data from main node
-    //call handleSearch for each child
+  handleNodeClick = async (node) => {
+    let nodes = await scrapeWikiPage(node);
+    console.log(nodes)
 
   }
 
