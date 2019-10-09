@@ -15,20 +15,7 @@ class App extends Component {
     this.state = {
       user: userService.getUser(),
       value: '',
-      nodes: [
-        //   {
-        //   name: 'Computer',
-        //   children: [],
-        //   link: 'www.comp.com',
-        //   snippet: 'computers are a great tool to learn'
-        // },
-        // {
-        //   name: 'Computer',
-        //   children: [],
-        //   link: 'www.comp.com',
-        //   snippet: 'computers are a great tool to learn'
-        // }
-      ]
+      nodes: [ ]
     };
     this.handleSearch = this.handleSearch.bind(this);
   }
@@ -50,12 +37,14 @@ class App extends Component {
   }
   handleNodeClick = async (node) => {
     let nodes = await scrapeWikiPage(node);
-    console.log(nodes)
-
+    let copyState = { ...this.state };
+    copyState.nodes[0].children = [...nodes]
+    this.setState(copyState)
   }
 
+  
+
   handleState = result => {
-    console.log(result)
     let copyState = { ...this.state };
     copyState.nodes.push({
       name: result[0],
