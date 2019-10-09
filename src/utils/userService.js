@@ -16,7 +16,6 @@ function signup(user) {
       })
       // Parameter destructuring!
       .then(({ token }) => tokenService.setToken(token))
-
   );
 }
 
@@ -39,7 +38,9 @@ function login(creds) {
       if (res.ok) return res.json();
       throw new Error("Bad Credentials!");
     })
-    .then(({ token }) => tokenService.setToken(token));
+    .then(({ token }) => {
+      tokenService.setToken(token)
+    });
 }
 
 export default {

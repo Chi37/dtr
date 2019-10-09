@@ -1,17 +1,20 @@
-const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
-const SALT_ROUNDS = 6 ;
+const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
+const SALT_ROUNDS = 6;
 
-const userSchema = new mongoose.Schema({
-  name: String,
-  email: {type: String, required: true, lowercase: true, unique: true},
-  password: String
-}, {
-  timestamps: true
-});
+const userSchema = new mongoose.Schema(
+  {
+    name: String,
+    email: { type: String, required: true, lowercase: true, unique: true },
+    password: String
+  },
+  {
+    timestamps: true
+  }
+);
 
 //option that could be put into line 11 after timestamps
-userSchema.set('toJSON', {
+userSchema.set("toJSON", {
   transform: function(doc, ret) {
     // remove the password property when serializing doc to JSON
     delete ret.password;
@@ -19,9 +22,9 @@ userSchema.set('toJSON', {
   }
 });
 
-userSchema.pre('save', function(next) {
+userSchema.pre("save", function(next) {
   const user = this;
-  if (!user.isModified('password')) return next();
+  if (!user.isModified("password")) return next();
   // password has been changed - salt and hash it
   bcrypt.hash(user.password, SALT_ROUNDS, function(err, hash) {
     if (err) return next(err);
@@ -31,5 +34,12 @@ userSchema.pre('save', function(next) {
   });
 });
 
-module.exports = mongoose.model('User', userSchema);
+userSchema.methods.comparePassword = function(tryPassword, cb) {
+  // 'this' represents the document that you called comparePassword on
+  bcrypt.compare(tryPassword, this.password, function(err, isMatch) {
+    if (err) return cb(err);
+    cb(null, isMatch);
+  });
+};
 
+module.exports = mongoose.model("User", userSchema);
