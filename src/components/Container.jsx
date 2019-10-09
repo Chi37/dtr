@@ -16,7 +16,7 @@ const Container = (props) => (
 			value={props.value} />
 		{(props.nodes) ? props.nodes.map((node, idx) => (
 			<div>
-				<button className='nodes' onClick={() => props.handleNodeClick()}>
+				<button className='nodes' onClick={() => props.handleNodeClick(node.name)}>
 					<Node key={idx} node={node} />
 				</button>
 				{node.snippet}

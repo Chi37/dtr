@@ -1,3 +1,8 @@
+// require module for webscraping
+const cheerio = require('cheerio');
+const request = require('request');
+
+// Wiki endpoint
 let url = "https://en.wikipedia.org/w/api.php";
 
 
@@ -18,9 +23,19 @@ export function fetchWiki(input) {
 
 
 
-
-
-
-		// return fetch(BASE_URL + input, { mode: 'cors' })
-		// .then(res => res.json())
-		// .then( console.log(res['query']['search'][0]['title']))
+export function scrapeWikiPage(string) {
+	return new Promise((resolve, reject) => {
+		request(`https://en.wikipedia.org/wiki/${string}`, function (err, res, html) {
+			if (!err && res.statusCode === 200) {
+				const nodes = []
+				let $ = cheerio.load(html);
+				let childrenNodes = $('p').find('a').slice(0, 2)
+				childrenNodes.each(function (i, elem) {
+					nodes[i] = $(this).text();
+				});
+				resolve(nodes)} else {
+				reject(err)
+			}
+		});
+	});
+}
