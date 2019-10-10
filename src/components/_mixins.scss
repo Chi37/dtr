@@ -1,7 +1,9 @@
-@mixin flexCenter($direction, $position) {
+$content: center;
+
+@mixin flexCenter($direction, $position, $content) {
 	display: flex;
-	justify-content: center;
+	justify-content: $content;
 	align-items: $position;
 	flex-direction: $direction;
-	height: 100%;
+	position: relative;
 }

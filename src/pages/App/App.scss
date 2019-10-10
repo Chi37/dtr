@@ -2,19 +2,22 @@
 @import '../../components/mixins';
 
 .App {
-  @include flexCenter(row, center);
+  @include flexCenter(row, center, center);
+  height: 100vh;
 }
+
 
 .header-footer {
-  bottom: 0;
+	flex: 0 0 0 0;
   width: 100%;
-  @include flexCenter(absolute, center);
+  @include flexCenter(absolute, center, center);
   font-size: calc(10px + 2vmin);
   background: map-get($map: $gradients, $key: chill );
-  color: nth($color-collection,1)
+	color: nth($color-collection,1)
 }
 
-
-
+footer {
+  margin-bottom: 0;
+}
 
 

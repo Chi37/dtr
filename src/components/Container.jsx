@@ -1,15 +1,11 @@
 import React from 'react';
 import SearchBar from "./SearchBar"
-import NavBar from "./NavBar";
 import Node from "./Node";
 import './Container.scss'
 
 
 const Container = (props) => (
   <div className='container'>
-    <header className="header-footer">DTR
-      <NavBar user={props.user} handleLogout={props.handleLogout} />
-    </header>
     <SearchBar
       id='searchBar'
       handleSearch={props.handleSearch}
@@ -24,7 +20,6 @@ const Container = (props) => (
       </>
     )) : 'LOADING...'
     }
-    <footer className="header-footer">Made by Chi</footer>
   </div>
 );
 

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./App.scss";
+import NavBar from "../../components/NavBar";
 import { Route, Switch } from "react-router-dom";
 import SignupPage from "../Login/SignupPage";
 import LoginPage from "../Login/LoginPage";
@@ -69,6 +70,9 @@ class App extends Component {
   render() {
     return (
       <>
+        <header className="header-footer">DTR
+          <NavBar user={this.state.user} handleLogout={this.handleLogout} />
+        </header>
         <Switch>
           <Route exact path="/" render={() => (
             <Container
@@ -102,6 +106,7 @@ class App extends Component {
               <Redirect to='/login'/>
           }/> */}
         </Switch>
+        <footer className="header-footer">Made by Chi</footer>
       </>
     );
   }

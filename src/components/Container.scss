@@ -4,15 +4,17 @@ $size: 70px;
 @import './mixins';
 
 .container{
-	@include flexCenter(row, center);
-	height: 90vh;
+	@include flexCenter(normal, flex-start, center);
+	min-height: 100vh;
 }
 
 form {
-	@include flexCenter(row, center);
+	@include flexCenter(row, center, center);
+	width: 100%;
 }
+
 button {
-	@include flexCenter(column, right);
+	@include flexCenter(column, right, center);
 	background-color: nth($color-collection,1);
 	border: none;
 	
