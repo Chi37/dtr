@@ -32,14 +32,11 @@ export function scrapeWikiPage(link) {
         const nodes = []
         let $ = cheerio.load(html);
         let childrenNodes = $('p').find('a').slice(0, 2)
-        console.log(childrenNodes.text())
         let p = $('div.mw-parser-output').find('p').find('a')
           .map((i, x) => $(x).attr('title')).toArray().slice(0, 2)
-        console.log('p ' + p)
-        // let t = p.map((i,x)=>$(x).attr('title')).toArray()
-        // console.log('t: '+ t)
-        childrenNodes.each(function (i, elem) {
-          nodes[i] = $(this).text();
+        console.log(p)
+        p.map(function (elem, i) {
+          nodes[i] = elem
         });
         resolve(nodes)
       } else {
