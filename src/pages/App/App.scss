@@ -5,13 +5,16 @@
   @include flexCenter(row, center);
 }
 
-
 .header-footer {
-  min-height: 10vh;
-  @include flexCenter(column, center);
+  bottom: 0;
+  width: 100%;
+  @include flexCenter(absolute, center);
   font-size: calc(10px + 2vmin);
   background: map-get($map: $gradients, $key: chill );
   color: nth($color-collection,1)
 }
+
+
+
 
 

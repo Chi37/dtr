@@ -66,14 +66,6 @@ class App extends Component {
     this.setState({ value: e.target.value });
   }
 
-
-  /*--- Lifecycle Methods ---*/
-
-  async componentDidMount() {
-    // const scores = await scoresService.index();
-    // this.setState({ scores });
-  }
-
   render() {
     return (
       <>

@@ -1,0 +1,46 @@
+form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: right;
+      -ms-flex-align: right;
+          align-items: right;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: rgba(40, 40, 213, 0.94);
+  border: none;
+}
+
+button#node {
+  width: 70px;
+  height: 70px;
+  border: 2px dotted rgba(255, 249, 249, 0.886);
+  border-radius: 35px;
+  color: white;
+}
+
+button:hover {
+  background-color: #40789b;
+}
+/*# sourceMappingURL=Container.css.map */
