@@ -1,5 +1,8 @@
+@import '../../components/variables';
+@import '../../components/mixins';
+
 .App {
-  text-align: center;
+  @include flexCenter(row, center);
 }
 
 .App-logo {

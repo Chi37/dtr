@@ -1,36 +1,29 @@
 $size: 70px;
-$text: white;
-$color-collection: (rgba(40, 40, 213, 0.94), rgb(138,8,8), rgba(255, 249, 249, 0.886), rgb(64, 120, 155));
 
-.nodes {
-	width: $size;
-  height: $size;
-  border: 2px dotted nth($color-collection,3);
-  border-radius: $size / 2;
-  background-color: nth($color-collection,1);
-  color: $text;
-  // line-height: $size / 2;
-  text-align: center;
+@import './variables';
+@import './mixins';
+
+form {
+	@include flexCenter(row, center);
+}
+button {
+	@include flexCenter(column, right);
+	background-color: nth($color-collection,1);
+	border: none;
+	
+	
+	&#node{
+		width: $size;
+		height: $size;
+		border: 2px dotted nth($color-collection,3);
+		border-radius: $size / 2;
+		color: $primaryText;
+	}
+
+
+	&:hover {
+		background-color: nth($color-collection,4);
+	}
 }
 
-.nodes:first-child {
-	margin-top: 0;
-}
-
-.nodes:before {
-	position: absolute; 
-	border: 1px solid #999; 
-	width: 0; 
-	height: 50px; 
-	display: block; 
-	content: ''; 
-	left: 50%; 
-	z-index: 1; 
-	top: -54px; 
-	margin-left: -1px;
-}
-
-.nodes:first-child:before {
-	display: none;
-}
 
