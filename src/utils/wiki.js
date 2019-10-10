@@ -9,13 +9,14 @@ let url = "https://en.wikipedia.org/w/api.php";
 export function fetchWiki(input) {
   const params = {
     action: "opensearch",
-    search: input,
+    search: input.replace(/\s/g, "%20"),
     limit: "1",
     namespace: "0",
     format: "json"
   };
   url = url + "?origin=*";
   Object.keys(params).forEach(function (key) { url += "&" + key + "=" + params[key]; });
+  console.log(url + ' url')
   return fetch(url, { mode: 'cors' })
     .then(function (response) { return response.json(); })
     .catch(function (error) { console.log(error); });
@@ -23,13 +24,20 @@ export function fetchWiki(input) {
 
 
 
-export function scrapeWikiPage(string) {
+export function scrapeWikiPage(link) {
   return new Promise((resolve, reject) => {
-    request(`https://en.wikipedia.org/wiki/${string}`, function (err, res, html) {
+    request(link, function (err, res, html) {
+      console.log(link);
       if (!err && res.statusCode === 200) {
         const nodes = []
         let $ = cheerio.load(html);
         let childrenNodes = $('p').find('a').slice(0, 2)
+        console.log(childrenNodes.text())
+        let p = $('div.mw-parser-output').find('p').find('a')
+          .map((i, x) => $(x).attr('title')).toArray().slice(0, 2)
+        console.log('p ' + p)
+        // let t = p.map((i,x)=>$(x).attr('title')).toArray()
+        // console.log('t: '+ t)
         childrenNodes.each(function (i, elem) {
           nodes[i] = $(this).text();
         });

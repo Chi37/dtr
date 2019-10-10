@@ -30,7 +30,7 @@ class App extends Component {
   };
 
   async handleSearch(e) {
-    e.preventDefault(); 
+    e.preventDefault();
     let result = await (fetchWiki(this.state.value))
     this.handleState(result);
 
@@ -42,12 +42,12 @@ class App extends Component {
 
 
   handleNodeClick = async (node) => {
+    console.log(node + 'to scrape')
     let nodes = await scrapeWikiPage(node);
-    let copyState = { ...this.state };
     if (nodes.length) {
       nodes.map(e => {
         this.handleButton(e);
-      })
+      });
     }
   }
 
