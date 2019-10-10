@@ -6,23 +6,26 @@ import './Container.scss'
 
 
 const Container = (props) => (
-  <>
-    <NavBar user={props.user} handleLogout={props.handleLogout} />
+  <div className='container'>
+    <header className="header-footer">DTR
+      <NavBar user={props.user} handleLogout={props.handleLogout} />
+    </header>
     <SearchBar
       id='searchBar'
       handleSearch={props.handleSearch}
       handleChange={props.handleChange}
       value={props.value} />
     {(props.nodes) ? props.nodes.map((node, idx) => (
-      <div>
+      <>
         <button id='node' onClick={() => props.handleNodeClick(node.link)}>
           <Node key={idx} node={node} />
         </button>
         {node.snippet}
-      </div>
+      </>
     )) : 'LOADING...'
     }
-  </>
+    <footer className="header-footer">Made by Chi</footer>
+  </div>
 );
 
 

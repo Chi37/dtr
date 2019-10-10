@@ -3,6 +3,11 @@ $size: 70px;
 @import './variables';
 @import './mixins';
 
+.container{
+	@include flexCenter(row, center);
+	height: 90vh;
+}
+
 form {
 	@include flexCenter(row, center);
 }
@@ -25,5 +30,4 @@ button {
 		background-color: nth($color-collection,4);
 	}
 }
-
 

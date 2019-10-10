@@ -69,7 +69,6 @@ class App extends Component {
   render() {
     return (
       <>
-        <header className="header-footer">DTR</header>
         <Switch>
           <Route exact path="/" render={() => (
             <Container
@@ -103,7 +102,6 @@ class App extends Component {
               <Redirect to='/login'/>
           }/> */}
         </Switch>
-        <footer className="header-footer">Made by Chi</footer>
       </>
     );
   }
