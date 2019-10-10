@@ -15,7 +15,7 @@ class App extends Component {
     this.state = {
       user: userService.getUser(),
       value: '',
-      nodes: [ ]
+      nodes: []
     };
     this.handleSearch = this.handleSearch.bind(this);
   }
@@ -30,27 +30,37 @@ class App extends Component {
   };
 
   async handleSearch(e) {
-    e.preventDefault();
+    e.preventDefault(); 
     let result = await (fetchWiki(this.state.value))
     this.handleState(result);
 
   }
+  async handleButton(string) {
+    let result = await (fetchWiki(string))
+    this.handleState(result);
+  }
+
+
   handleNodeClick = async (node) => {
     let nodes = await scrapeWikiPage(node);
     let copyState = { ...this.state };
-    copyState.nodes[0].children = [...nodes]
-    this.setState(copyState)
+    if (nodes.length) {
+      nodes.map(e => {
+        this.handleButton(e);
+      })
+    }
   }
 
-  
+
 
   handleState = result => {
     let copyState = { ...this.state };
     copyState.nodes.push({
       name: result[0],
-      children: [],
       link: result[3][0],
-      snippet: result[2][0]
+      snippet: result[2][0],
+      leftChild: null,
+      rightChild: null,
     });
     console.log(copyState)
     this.setState(copyState)

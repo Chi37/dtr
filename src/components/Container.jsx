@@ -20,17 +20,14 @@ const Container = (props) => (
         </button>
         {node.snippet}
 
-        {(node.children.length) ? node.children.map((node, idx) => (
+        {/* {(node.children.length) ? node.children.map((node, idx) => (
           <button className='nodes' onClick={() => props.handleNodeClick(node.name)}>
             <Node key={idx} node={node} />
           </button>
         )) : ''
-        }
-
-
-
+        } */}
       </div>
-    )) : ''
+    )) : 'LOADING...'
     }
   </>
 );
