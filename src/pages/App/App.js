@@ -7,8 +7,6 @@ import userService from "../../utils/userService";
 import Container from "../../components/Container";
 import { fetchWiki, scrapeWikiPage } from '../../utils/wiki';
 
-
-
 class App extends Component {
   constructor() {
     super();
@@ -50,8 +48,6 @@ class App extends Component {
       });
     }
   }
-
-
 
   handleState = result => {
     let copyState = { ...this.state };
