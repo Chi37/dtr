@@ -7,7 +7,6 @@ import './Container.scss'
 
 const Container = (props) => (
   <>
-
     <NavBar user={props.user} handleLogout={props.handleLogout} />
     <SearchBar
       id='searchBar'
@@ -16,12 +15,19 @@ const Container = (props) => (
       value={props.value} />
     {(props.nodes) ? props.nodes.map((node, idx) => (
       <div>
-        <button className='nodes' onClick={() => props.handleNodeClick(node.name)}>
+        <button className='nodes' onClick={() => props.handleNodeClick(node.link)}>
           <Node key={idx} node={node} />
         </button>
         {node.snippet}
+
+        {/* {(node.children.length) ? node.children.map((node, idx) => (
+          <button className='nodes' onClick={() => props.handleNodeClick(node.name)}>
+            <Node key={idx} node={node} />
+          </button>
+        )) : ''
+        } */}
       </div>
-    )) : ''
+    )) : 'LOADING...'
     }
   </>
 );
