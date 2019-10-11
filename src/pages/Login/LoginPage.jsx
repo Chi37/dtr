@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-// import './LoginPage.css';
 import userService from "../../utils/userService";
 
 class LoginPage extends Component {
@@ -20,7 +18,6 @@ class LoginPage extends Component {
     e.preventDefault();
     try {
       await userService.login(this.state);
-      // Let <App> know a user has signed up!
       this.props.handleSignupOrLogin();
 
       // Successfully signed up - show main page
@@ -29,45 +26,28 @@ class LoginPage extends Component {
       alert("Invalid Credentials!");
     }
   };
-
   render() {
     return (
-      <div className="LoginPage">
-        <header className="header-footer">Log In</header>
-        <form className="form-horizontal" onSubmit={this.handleSubmit}>
-          <div className="form-group">
-            <div className="col-sm-12">
-              <input
-                type="email"
-                className="form-control"
-                placeholder="Email"
-                value={this.state.email}
-                name="email"
-                onChange={this.handleChange}
-              />
-            </div>
-          </div>
-          <div className="form-group">
-            <div className="col-sm-12">
-              <input
-                type="password"
-                className="form-control"
-                placeholder="Password"
-                value={this.state.pw}
-                name="pw"
-                onChange={this.handleChange}
-              />
-            </div>
-          </div>
-          <div className="form-group">
-            <div className="col-sm-12 text-center">
-              <button className="btn btn-default">Log In</button>
-              &nbsp;&nbsp;&nbsp;
-              <Link to="/">Cancel</Link>
-            </div>
-          </div>
+      <>
+        <form className="form-group" onSubmit={this.handleSubmit}>
+          <input
+            type="email"
+            placeholder="Email"
+            value={this.state.email}
+            name="email"
+            onChange={this.handleChange}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={this.state.pw}
+            name="pw"
+            onChange={this.handleChange}
+          />
+          <button className="login-btn">Log In</button>
+          &nbsp;&nbsp;&nbsp;
         </form>
-      </div>
+      </>
     );
   }
 }

@@ -1,0 +1,18 @@
+$content: center;
+
+@mixin flexCenter($direction, $position, $content) {
+	display: flex;
+	flex-direction: $direction;
+	align-items: $position;
+	justify-content: $content;
+	position: relative;
+}
+
+@mixin input(){
+
+}
+
+@mixin button(){
+
+}
+

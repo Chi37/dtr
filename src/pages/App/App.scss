@@ -1,22 +1,18 @@
-.App {
-  text-align: center;
-}
+@import '../../components/variables';
+@import '../../components/mixins';
 
-.App-logo {
-  height: 40vmin;
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+header, footer{
+  height: 10vh;
+  width: 100%;
+  @include flexCenter(absolute, center, center);
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: nth($color-collection,1);
 }
 
-.App-link {
-  color: #09d3ac;
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  font-size: 10px;
 }

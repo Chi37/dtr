@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import "./App.scss";
-import { Route, Switch } from "react-router-dom";
+import NavBar from "../../components/NavBar";
+import { Route, Switch, Redirect } from "react-router-dom";
 import SignupPage from "../Login/SignupPage";
 import LoginPage from "../Login/LoginPage";
 import userService from "../../utils/userService";
 import Container from "../../components/Container";
 import { fetchWiki, scrapeWikiPage } from '../../utils/wiki';
-
-
 
 class App extends Component {
   constructor() {
@@ -15,20 +14,7 @@ class App extends Component {
     this.state = {
       user: userService.getUser(),
       value: '',
-      nodes: [
-        //   {
-        //   name: 'Computer',
-        //   children: [],
-        //   link: 'www.comp.com',
-        //   snippet: 'computers are a great tool to learn'
-        // },
-        // {
-        //   name: 'Computer',
-        //   children: [],
-        //   link: 'www.comp.com',
-        //   snippet: 'computers are a great tool to learn'
-        // }
-      ]
+      nodes: []
     };
     this.handleSearch = this.handleSearch.bind(this);
   }
@@ -48,20 +34,29 @@ class App extends Component {
     this.handleState(result);
 
   }
+  async handleButton(string) {
+    let result = await (fetchWiki(string))
+    this.handleState(result);
+  }
+
+
   handleNodeClick = async (node) => {
     let nodes = await scrapeWikiPage(node);
-    console.log(nodes)
-
+    if (nodes.length) {
+      nodes.map(e => {
+        this.handleButton(e);
+      });
+    }
   }
 
   handleState = result => {
-    console.log(result)
     let copyState = { ...this.state };
     copyState.nodes.push({
       name: result[0],
-      children: [],
       link: result[3][0],
-      snippet: result[2][0]
+      snippet: result[2][0],
+      leftChild: null,
+      rightChild: null,
     });
     console.log(copyState)
     this.setState(copyState)
@@ -71,51 +66,45 @@ class App extends Component {
     this.setState({ value: e.target.value });
   }
 
-
-  /*--- Lifecycle Methods ---*/
-
-  async componentDidMount() {
-    // const scores = await scoresService.index();
-    // this.setState({ scores });
-  }
-
   render() {
     return (
       <>
-        <header className="header-footer">DTR</header>
+        <header>
+          <NavBar user={this.state.user} handleLogout={this.handleLogout} />
+        </header>
         <Switch>
-          <Route exact path="/" render={() => (
-            <Container
-              user={this.state.user}
-              value={this.state.value}
-              nodes={this.state.nodes}
-              handleLogout={this.handleLogout}
-              handleSearch={this.handleSearch}
-              handleChange={this.handleChange}
-              handleNodeClick={this.handleNodeClick}
-            />)}
-          />
-          <Route exact path="/signup" render={({ history }) => (
-            <SignupPage
-              history={history}
-              handleSignupOrLogin={this.handleSignupOrLogin}
-            />)}
-          />
-          <Route exact path="/login" render={({ history }) => (
-            <LoginPage
-              history={history}
-              handleSignupOrLogin={this.handleSignupOrLogin}
-            />)}
-          />
-          {/* <Route exact path='/clusters' render={() => 
-            userService.getUser() ? 
-              <ClusterPage
-                clusters = this.state.node
-              />
-            :
-              <Redirect to='/login'/>
-          }/> */}
+          <div className='container'>
+            <Route exact path="/" render={() => (
+              userService.getUser() ?
+                <Container
+                  user={this.state.user}
+                  value={this.state.value}
+                  nodes={this.state.nodes}
+                  handleLogout={this.handleLogout}
+                  handleSearch={this.handleSearch}
+                  handleChange={this.handleChange}
+                  handleNodeClick={this.handleNodeClick}
+                />
+                :
+                <Redirect to='/login' />)}
+            />
+            <Route exact path="/signup" render={({ history }) => (
+              <SignupPage
+                history={history}
+                handleSignupOrLogin={this.handleSignupOrLogin}
+              />)}
+            />
+            <Route exact path="/login" render={({ history }) => (
+              <LoginPage
+                history={history}
+                handleSignupOrLogin={this.handleSignupOrLogin}
+              />)}
+            />
+          </div>
         </Switch>
+        <footer>Made by Chi
+        <div> Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+        </footer>
       </>
     );
   }
