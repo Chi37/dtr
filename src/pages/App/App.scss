@@ -12,7 +12,6 @@
   width: 100%;
   @include flexCenter(absolute, center, center);
   font-size: calc(10px + 2vmin);
-  background: map-get($map: $gradients, $key: chill );
 	color: nth($color-collection,1)
 }
 

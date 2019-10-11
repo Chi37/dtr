@@ -1,11 +1,11 @@
 $primaryBtn: blue;
 $primaryText: white;
-$color-collection: (rgba(40, 40, 213, 0.94), rgb(138,8,8), rgba(255, 249, 249, 0.886), rgb(64, 120, 155));
+$color-collection: (#2828d5f0, rgb(138,8,8), rgba(255, 249, 249, 0.886), rgb(64, 120, 155));
 
 
 $gradients: () !default;
 $gradients: map-merge((
-    chill: linear-gradient(135deg, #09e485 0%,#0291e3 100%),
+    chill: linear-gradient(135deg, #2828d5f0 20%,#0291e3 80%),
     warm: linear-gradient(135deg, #F2CD48 0%,#FD803F 100%),
     hot: linear-gradient(135deg, #F9445A 0%,#FD803F 100%),
     cold: linear-gradient(135deg, #8019C6 0%,#2F93CC 100%)
