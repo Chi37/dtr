@@ -41,7 +41,6 @@ class App extends Component {
 
 
   handleNodeClick = async (node) => {
-    console.log(node + 'to scrape')
     let nodes = await scrapeWikiPage(node);
     if (nodes.length) {
       nodes.map(e => {
@@ -70,7 +69,7 @@ class App extends Component {
   render() {
     return (
       <>
-        <header className="header-footer">DTR
+        <header>
           <NavBar user={this.state.user} handleLogout={this.handleLogout} />
         </header>
         <Switch>
@@ -100,16 +99,8 @@ class App extends Component {
               handleSignupOrLogin={this.handleSignupOrLogin}
             />)}
           />
-          {/* <Route exact path='/clusters' render={() => 
-            userService.getUser() ? 
-              <ClusterPage
-                clusters = this.state.node
-              />
-            :
-              <Redirect to='/login'/>
-          }/> */}
         </Switch>
-        <footer className="header-footer">Made by Chi  <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div></footer>
+        <footer>Made by Chi  <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div></footer>
       </>
     );
   }

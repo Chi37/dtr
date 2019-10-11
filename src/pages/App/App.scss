@@ -1,20 +1,20 @@
 @import '../../components/variables';
 @import '../../components/mixins';
 
-.App {
-  @include flexCenter(row, center, center);
-  height: 100vh;
-}
 
 
-
-.header-footer {
-	flex: 0 0 0 0;
+header, footer{
+  height: 10vh;
   width: 100%;
   @include flexCenter(absolute, center, center);
   font-size: calc(10px + 2vmin);
   color: nth($color-collection,1);
-  
 }
 
-
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem; 
+  font-size: 10px;
+}
