@@ -13,6 +13,12 @@ $size: 70px;
 form {
 	@include flexCenter(row, center, center);
 	width: 100%;
+
+	&.form-group {
+		color:blue;
+		@include flexCenter(column, flex-start, '');
+		font-size: 20px;
+	}
 }
 
 input {
@@ -34,12 +40,7 @@ input {
 	margin: 20px auto;
 	padding-bottom: 40px;
 	transition: border-bottom 0.5s ease;
-	&.form-control {
-	color:blue;
-	@include flexCenter(row, flex-start, '');
-	font-size: 20px;
-	
-	}
+
 }
 
 
@@ -47,7 +48,6 @@ button {
 	@include flexCenter(column, right, center);
 	background-color: nth($color-collection,1);
 	border: none;
-	
 	
 	&#node{
 		width: $size;
@@ -61,7 +61,6 @@ button {
 	&:hover {
 		background-color: nth($color-collection,4);
 	}
-
 
 }
 
