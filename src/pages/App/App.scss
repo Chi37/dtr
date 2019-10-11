@@ -7,16 +7,14 @@
 }
 
 
+
 .header-footer {
 	flex: 0 0 0 0;
   width: 100%;
   @include flexCenter(absolute, center, center);
   font-size: calc(10px + 2vmin);
-	color: nth($color-collection,1)
-}
-
-footer {
-  margin-bottom: 0;
+  color: nth($color-collection,1);
+  
 }
 
 

@@ -5,7 +5,7 @@ const SearchBar = (props) => {
 		<>
 			<form onSubmit={props.handleSearch}>
 				<input placeholder="search Wikipedia" type="text" autoComplete="off" onChange={props.handleChange} />
-				<button id='searchBtn'>Search</button>
+				<button id='searchBtn'>Search <i class='search-icon'></i></button>
 			</form>
 		</>
 	);
