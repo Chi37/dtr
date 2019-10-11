@@ -34,7 +34,14 @@ input {
 	margin: 20px auto;
 	padding-bottom: 40px;
 	transition: border-bottom 0.5s ease;
+	&.form-control {
+	color:blue;
+	@include flexCenter(row, flex-start, '');
+	font-size: 20px;
+	
+	}
 }
+
 
 button {
 	@include flexCenter(column, right, center);

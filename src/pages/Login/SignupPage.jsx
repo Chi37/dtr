@@ -14,10 +14,10 @@ class SignupPage extends Component {
 
   render() {
     return (
-      <div> 
+      <> 
         <SignupForm {...this.props} updateMessage={this.updateMessage} />
-        <p>{this.state.message}</p>
-      </div>
+        <p id='signup-message'>{this.state.message}</p>
+      </>
     );
   }
 }
