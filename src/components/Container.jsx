@@ -6,7 +6,6 @@ import './Container.scss'
 
 const Container = (props) => (
   <>
-  <div className='container'>
     <div className='search'>
       <SearchBar
         id='searchBar'
@@ -25,7 +24,6 @@ const Container = (props) => (
         )) : 'LOADING...'
       }
     </div>
-  </div>
   </>
 );
 

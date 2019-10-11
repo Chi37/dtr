@@ -1,11 +1,12 @@
 body {
   margin: 0;
-  height: 100%;
-  position: relative;
-  
   font-family: 'Kalam';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+.main-container{
+  height: 100vh;
+  position: relative;
+}
 
