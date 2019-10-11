@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import userService from "../../utils/userService";
 
 class LoginPage extends Component {
@@ -47,7 +46,6 @@ class LoginPage extends Component {
           />
           <button className="login-btn">Log In</button>
           &nbsp;&nbsp;&nbsp;
-        <Link to="/">Cancel</Link>
         </form>
       </>
     );
