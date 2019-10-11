@@ -47,6 +47,8 @@ button {
 	color:  rgba(nth($color-collection,2),.5);
 	
 	&#node{
+		width: $size;
+		font-size: 9px;
 		color: $primaryText;
 		border: 2px dotted nth($color-collection,3);
 		border-radius: $size / 2;
