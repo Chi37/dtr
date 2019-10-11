@@ -4,8 +4,9 @@ $size: 70px;
 @import './mixins';
 
 .container{
-	@include flexCenter(normal, flex-start, center);
+	@include flexCenter(column, flex-start, '');
 	min-height: 100vh;
+	background: map-get($map: $gradients, $key: chill );
 }
 
 form {
