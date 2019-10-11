@@ -2,9 +2,9 @@ $content: center;
 
 @mixin flexCenter($direction, $position, $content) {
 	display: flex;
-	justify-content: $content;
-	align-items: $position;
 	flex-direction: $direction;
+	align-items: $position;
+	justify-content: $content;
 	position: relative;
 }
 

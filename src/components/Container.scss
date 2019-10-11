@@ -11,6 +11,10 @@ $size: 60px;
 form {
 	@include flexCenter(column, center, center);
 	width: 100%;
+
+	&.wiki-search{
+		@include flexCenter(row, '', '');
+	}
 }
 
 input {
@@ -20,7 +24,7 @@ input {
 	text-align: center;
 	font-family: 'Kalam', sans-serif;
 	background: transparent;
-	margin: 20px auto;
+	margin: 0;
 	display: inline-block;
 	color: rgba(nth($color-collection,2),.5);
 	padding: 30px;
@@ -40,7 +44,7 @@ button {
 	height: $size;
 	background: transparent;
 	font-size: $size/2;
-	color: nth($color-collection,4);
+	color:  rgba(nth($color-collection,2),.5);
 	
 	&#node{
 		color: $primaryText;
