@@ -5,6 +5,7 @@ $size: 70px;
 
 .container{
 	@include flexCenter(column, flex-start, '');
+	display:block;
 	min-height: 100vh;
 
 }
@@ -12,6 +13,27 @@ $size: 70px;
 form {
 	@include flexCenter(row, center, center);
 	width: 100%;
+}
+
+input {
+	height: 50px;
+	text-align: center;
+	width: 600px;
+	font-weight: 100;
+	font-size: 50px;
+	display: inline-block;
+	font-family: 'Kalam', sans-serif;
+	color: rgba(nth($color-collection,2),.5);
+	padding: 30px;
+	padding-bottom: 30px;
+	box-sizing: border-box;
+	border: none;
+	border-bottom-style: none;
+	border-bottom: 3px solid rgba(nth($color-collection,4),.1);
+	background: transparent;
+	margin: 20px auto;
+	padding-bottom: 40px;
+	transition: border-bottom 0.5s ease;
 }
 
 button {
@@ -28,7 +50,6 @@ button {
 		color: $primaryText;
 		background: map-get($map: $gradients, $key: chill );
 	}
-
 
 	&:hover {
 		background-color: nth($color-collection,4);
