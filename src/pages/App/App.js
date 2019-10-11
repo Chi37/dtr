@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.scss";
 import NavBar from "../../components/NavBar";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import SignupPage from "../Login/SignupPage";
 import LoginPage from "../Login/LoginPage";
 import userService from "../../utils/userService";
@@ -75,6 +75,7 @@ class App extends Component {
         </header>
         <Switch>
           <Route exact path="/" render={() => (
+            userService.getUser() ?
             <Container
               user={this.state.user}
               value={this.state.value}
@@ -83,7 +84,9 @@ class App extends Component {
               handleSearch={this.handleSearch}
               handleChange={this.handleChange}
               handleNodeClick={this.handleNodeClick}
-            />)}
+            /> 
+            :
+            <Redirect to='/login'/>)}
           />
           <Route exact path="/signup" render={({ history }) => (
             <SignupPage
