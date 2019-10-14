@@ -73,48 +73,37 @@ button {
 	cursor: pointer;
   position: relative;
 
-  //Tooltip text container - above element
-  //You can adjust the position to make the container appear below or beside the element
   &::before {
     background-color: nth($color-collection,3);;
     border-radius: 5px;
     color: (nth($color-collection,2));
     content: attr(aria-label); 
-    left: -80px; //This centers the container above the element
-    padding: 1rem;
     position: absolute;
-    text-transform: none;
-    top: -80px; //This places the container above the element that needs a tooltip
+    top: 80px; 
     transition: all 0.5s ease;
     width: 160px;
   }
 
   //Tooltip arrow
-  //You can adjust the position of this to align nicely with the element that
-  //needs a tooltip. You can also use `transform` to rotate it to make the
-  //tooltip work below or next to the element.
   &::after {
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
-    border-top: 5px solid #000;
+    border-top: 5px solid (nth($color-collection,2));
     content: " ";
-    font-size: 0;
-    left: 9px; //This centers the arrow above the element with the tooltip
-    line-height: 0;
-    margin-left: -5px;
+    line-height: 10;
+    margin-left: 15px;
     position: absolute;
-    top: -12px; //This positions the arrow at the bottom of the container
-    width: 0;
+    top: -12px; 
   }
 
-  //Setting up the transition
+  //Set up transition
   &::before,
   &::after {
     opacity: 0;
     pointer-events: none;
   }
 
-  //Triggering the transition
+  //Trigger transition
   &:focus::before,
   &:focus::after,
   &:hover::before,
