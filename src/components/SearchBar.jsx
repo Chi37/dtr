@@ -4,7 +4,10 @@ const SearchBar = (props) => {
 	return (
 		<>
 			<form className='wiki-search' onSubmit={props.handleSearch}>
-				<input placeholder="search Wikipedia" type="text" autoComplete="off" onChange={props.handleChange} />
+				<input 
+					placeholder="search Wikipedia" type="text" autoComplete="off"  
+					onChange={props.handleChange}
+					value={props.value} />
 				<button id='searchBtn'>
 					Search
 				</button>

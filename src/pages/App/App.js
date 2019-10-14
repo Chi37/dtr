@@ -19,6 +19,7 @@ class App extends Component {
     this.handleSearch = this.handleSearch.bind(this);
   }
 
+ 
   handleLogout = () => {
     userService.logout();
     this.setState({ user: null });
@@ -31,6 +32,7 @@ class App extends Component {
   async handleSearch(e) {
     e.preventDefault();
     let result = await (fetchWiki(this.state.value))
+    this.state.value = '';
     this.handleResult(result)
     this.handleState(result);
 
@@ -72,6 +74,7 @@ class App extends Component {
 
   handleChange = (e) => {
     this.setState({ value: e.target.value });
+
   }
 
   render() {
