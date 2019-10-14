@@ -4,6 +4,7 @@ import Node from "./Node";
 import './Container.scss'
 
 
+
 const Container = (props) => (
   <>
     <div className='search'>
@@ -13,15 +14,16 @@ const Container = (props) => (
         handleChange={props.handleChange}
         value={props.value} />
     </div>
-    <div className='node'>
+    <div className='node-container'>
       {(props.nodes) ? props.nodes.map((node, idx) => (
         <>
-          <button id='node' onClick={() => props.handleNodeClick(node.link)}>
-            <Node key={idx} node={node} />
-          </button>
-          {node.snippet}
+          <div className='node-wrap'>
+            <button id='node' className='tooltip' aria-label={node.snippet} onClick={() => props.handleNodeClick(node.link)}>
+              <Node key={idx} node={node} />
+            </button>
+          </div>
         </>
-        )) : 'LOADING...'
+      )) : 'LOADING...'
       }
     </div>
   </>

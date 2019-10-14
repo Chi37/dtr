@@ -31,14 +31,22 @@ class App extends Component {
   async handleSearch(e) {
     e.preventDefault();
     let result = await (fetchWiki(this.state.value))
+    this.handleResult(result)
     this.handleState(result);
 
   }
   async handleButton(string) {
     let result = await (fetchWiki(string))
+    this.handleResult(result)
     this.handleState(result);
   }
 
+  handleResult(result){
+    console.log(result)
+    if (result[2][0].includes('refer to')){
+      console.log(result[2][1])
+    }
+  }
 
   handleNodeClick = async (node) => {
     let nodes = await scrapeWikiPage(node);
@@ -102,8 +110,7 @@ class App extends Component {
             />
           </div>
         </Switch>
-        <footer>Made by Chi
-        <div> Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+        <footer>
         </footer>
       </>
     );

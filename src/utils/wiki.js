@@ -10,7 +10,7 @@ export function fetchWiki(input) {
   const params = {
     action: "opensearch",
     search: input.replace(/\s/g, "%20"),
-    limit: "1",
+    limit: "2",
     namespace: "0",
     format: "json"
   };
