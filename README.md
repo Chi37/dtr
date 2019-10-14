@@ -32,7 +32,8 @@ TODO:
   - /cluster/index
   -/cluster/:id
   -/cluster/:id/delete 
- -[]: cluster model: user ---< cluster. cluster (ref:user, nodes=[], id, name)
+ -[]: cluster model: user ---< cluster. 
+ - cluster (ref:user, nodes=[], id, name)
   
 
 
