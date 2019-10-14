@@ -41,9 +41,9 @@ class App extends Component {
     this.handleState(result);
   }
 
-  handleResult(result){
+  handleResult(result) {
     console.log(result)
-    if (result[2][0].includes('refer to')){
+    if (result[2][0].includes('refer to')) {
       console.log(result[2][1])
     }
   }
@@ -97,16 +97,20 @@ class App extends Component {
                 <Redirect to='/login' />)}
             />
             <Route exact path="/signup" render={({ history }) => (
-              <SignupPage
-                history={history}
-                handleSignupOrLogin={this.handleSignupOrLogin}
-              />)}
+              !userService.getUser() ?
+                <SignupPage
+                  history={history}
+                  handleSignupOrLogin={this.handleSignupOrLogin}
+                /> :
+                <Redirect to='/' />)}
             />
             <Route exact path="/login" render={({ history }) => (
-              <LoginPage
-                history={history}
-                handleSignupOrLogin={this.handleSignupOrLogin}
-              />)}
+              !userService.getUser() ?
+                <LoginPage
+                  history={history}
+                  handleSignupOrLogin={this.handleSignupOrLogin}
+                /> :
+                <Redirect to='/' />)}
             />
           </div>
         </Switch>
