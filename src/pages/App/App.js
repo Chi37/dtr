@@ -45,6 +45,7 @@ class App extends Component {
 
   handleResult(result) {
     console.log(result)
+    if(!result[2][0]) return;
     if (result[2][0].includes('refer to')) {
       console.log(result[2][1])
     }
@@ -52,6 +53,7 @@ class App extends Component {
 
   handleNodeClick = async (node) => {
     let nodes = await scrapeWikiPage(node);
+    if(!nodes) return;
     if (nodes.length) {
       nodes.map(e => {
         this.handleButton(e);

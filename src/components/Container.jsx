@@ -18,7 +18,11 @@ const Container = (props) => (
       {(props.nodes) ? props.nodes.map((node, idx) => (
         <>
           <div className='node-wrap'>
-            <button id='node' className='tooltip' aria-label={node.snippet} onClick={() => props.handleNodeClick(node.link)}>
+            <button 
+            id='node' className='tooltip' 
+            aria-label={node.snippet} 
+            onClick={() => props.handleNodeClick(node.link)}
+            >
               <Node key={idx} node={node} />
             </button>
           </div>
