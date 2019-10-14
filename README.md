@@ -30,5 +30,12 @@ TODO:
 - []: Clear Button.
 - []: Better SASS implementation.
 - []: refactor state for some components. (Node and search form possibly having their own state?)
+-[]: Create, Show all with cluster of nodes. no editing or updating
+  - /cluster/index
+  -/cluster/:id
+  -/cluster/:id/delete 
+ -[]: cluster model: user ---< cluster. 
+ - cluster (ref:user, nodes=[], id, name)
+  
 
 
