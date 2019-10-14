@@ -19,7 +19,7 @@ class App extends Component {
     this.handleSearch = this.handleSearch.bind(this);
   }
 
- 
+
   handleLogout = () => {
     userService.logout();
     this.setState({ user: null });
@@ -44,14 +44,12 @@ class App extends Component {
   }
 
   handleResult(result) {
-    if(!result[2][0]) return;
-    if (result[2][0].includes('refer to')) {
-    }
+    if (!result[2][0]) return;
   }
 
   handleNodeClick = async (node) => {
     let nodes = await scrapeWikiPage(node);
-    if(!nodes) return;
+    if (!nodes) return;
     if (nodes.length) {
       nodes.map(e => {
         this.handleButton(e);
