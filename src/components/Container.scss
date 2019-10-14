@@ -5,12 +5,12 @@ $size: 60px;
 
 .container{
 	@include flexCenter(column, flex-start, '');
-	flex-wrap: wrap;
 	display:block;
 }
 .node-container {
-	@include flexCenter(wrap, center, center);
+	@include flexCenter(center, center, center);
 	height: 90vh;
+	flex-wrap: wrap;
 }
 
 
