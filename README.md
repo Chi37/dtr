@@ -7,6 +7,8 @@ A web app that allows you to (almost) see the relationships between wiki pages.
 
 [Trello] (https://trello.com/b/bDsqurUy/dtr)
 
+![nodes](public/screenshot.png)
+
 TOOLS:
 - MERN stack (Mongo, Express, React, NodeJS)
 - MediaWiki API 
