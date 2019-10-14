@@ -19,6 +19,7 @@ class App extends Component {
     this.handleSearch = this.handleSearch.bind(this);
   }
 
+ 
   handleLogout = () => {
     userService.logout();
     this.setState({ user: null });
@@ -31,17 +32,26 @@ class App extends Component {
   async handleSearch(e) {
     e.preventDefault();
     let result = await (fetchWiki(this.state.value))
+    this.state.value = '';
+    this.handleResult(result)
     this.handleState(result);
 
   }
   async handleButton(string) {
     let result = await (fetchWiki(string))
+    this.handleResult(result)
     this.handleState(result);
   }
 
+  handleResult(result) {
+    if(!result[2][0]) return;
+    if (result[2][0].includes('refer to')) {
+    }
+  }
 
   handleNodeClick = async (node) => {
     let nodes = await scrapeWikiPage(node);
+    if(!nodes) return;
     if (nodes.length) {
       nodes.map(e => {
         this.handleButton(e);
@@ -58,12 +68,12 @@ class App extends Component {
       leftChild: null,
       rightChild: null,
     });
-    console.log(copyState)
     this.setState(copyState)
   }
 
   handleChange = (e) => {
     this.setState({ value: e.target.value });
+
   }
 
   render() {
@@ -89,21 +99,24 @@ class App extends Component {
                 <Redirect to='/login' />)}
             />
             <Route exact path="/signup" render={({ history }) => (
-              <SignupPage
-                history={history}
-                handleSignupOrLogin={this.handleSignupOrLogin}
-              />)}
+              !userService.getUser() ?
+                <SignupPage
+                  history={history}
+                  handleSignupOrLogin={this.handleSignupOrLogin}
+                /> :
+                <Redirect to='/' />)}
             />
             <Route exact path="/login" render={({ history }) => (
-              <LoginPage
-                history={history}
-                handleSignupOrLogin={this.handleSignupOrLogin}
-              />)}
+              !userService.getUser() ?
+                <LoginPage
+                  history={history}
+                  handleSignupOrLogin={this.handleSignupOrLogin}
+                /> :
+                <Redirect to='/' />)}
             />
           </div>
         </Switch>
-        <footer>Made by Chi
-        <div> Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+        <footer>
         </footer>
       </>
     );
