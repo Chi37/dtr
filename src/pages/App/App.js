@@ -32,6 +32,7 @@ class App extends Component {
   async handleSearch(e) {
     e.preventDefault();
     let result = await (fetchWiki(this.state.value))
+    console.log(result)
     this.state.value = '';
     this.handleResult(result)
     this.handleState(result);
@@ -59,10 +60,13 @@ class App extends Component {
 
   handleState = result => {
     let copyState = { ...this.state };
+    let arrayIdx = 0
+
+    if (result[2][0].includes('refer to:')) {console.log('reference'); arrayIdx++}
     copyState.nodes.push({
       name: result[0],
-      link: result[3][0],
-      snippet: result[2][0],
+      link: result[3][arrayIdx],
+      snippet: result[2][arrayIdx],
       leftChild: null,
       rightChild: null,
     });
